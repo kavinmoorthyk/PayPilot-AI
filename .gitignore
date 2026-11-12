@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+database/*.db-wal
+database/*.db-shm
+uploads/receipts/
+npm-debug.log
+.DS_Store

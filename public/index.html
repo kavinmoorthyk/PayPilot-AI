@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="PayPilot AI — intelligent invoice management and payment insights.">
+  <title>PayPilot AI — Finance workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="PayPilot AI home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">paypilot<span>ai</span></span>
+      </a>
+      <div class="workspace-switch">
+        <div class="workspace-avatar">P</div>
+        <div><strong>Personal workspace</strong><small>Sandbox environment</small></div>
+        <span class="switch-chevron">⌄</span>
+      </div>
+      <div class="nav-caption">WORKSPACE</div>
+      <nav class="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-page="overview"><span class="nav-icon">◫</span><span>Overview</span><kbd>01</kbd></button>
+        <button class="nav-link" data-page="invoices"><span class="nav-icon">▤</span><span>Invoices</span><kbd>02</kbd></button>
+        <button class="nav-link" data-page="transactions"><span class="nav-icon">⇄</span><span>Transactions</span><kbd>03</kbd></button>
+        <button class="nav-link" data-page="assistant"><span class="nav-icon">✳</span><span>AI assistant</span><span class="nav-live"></span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip">
+          <div class="tip-icon">✦</div>
+          <strong>Work smarter with AI</strong>
+          <p>Ask PayPilot to explain invoices and payment workflows.</p>
+          <button data-page="assistant">Explore assistant <span>↗</span></button>
+        </div>
+        <div class="sandbox-pill"><span class="pulse-dot"></span> PAYPAL SANDBOX MODE</div>
+        <div class="profile-row"><div class="profile-avatar">P</div><div><strong>PayPilot Admin</strong><small>Workspace owner</small></div><span class="profile-more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button><span>paypilot<span>ai</span></span></div>
+        <div class="breadcrumb"><span>Workspace</span><i>/</i><strong id="page-title">Overview</strong></div>
+        <div class="topbar-actions">
+          <div class="live-indicator" id="connection-status"><span class="pulse-dot"></span> Connecting...</div>
+          <button class="icon-button" id="refresh-data" aria-label="Refresh dashboard" title="Refresh">↻</button>
+          <div class="top-avatar">P</div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-overview">
+        <div class="page-intro">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR FINANCE COMMAND CENTER</div><h1>Good to see you<span class="heading-period">.</span></h1><p>Here’s what’s happening with your invoices today.</p></div>
+          <button class="button button-primary" id="quick-create-invoice"><span>＋</span> Create invoice</button>
+        </div>
+
+        <section class="hero-card">
+          <div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div><div class="hero-grid"></div>
+          <div class="hero-copy"><div class="hero-tag"><span class="sparkle">✦</span> PAYPILOT INTELLIGENCE</div><h2>Clarity for every<br><em>payment decision.</em></h2><p>One workspace to organize invoices, understand your numbers and move your business forward.</p><button class="hero-link" data-page="assistant">Meet your AI assistant <span>↗</span></button></div>
+          <div class="hero-visual" aria-hidden="true"><div class="visual-ring ring-one"></div><div class="visual-ring ring-two"></div><div class="visual-core"><span>✳</span></div><div class="float-chip chip-top"><span class="chip-dot"></span> Smart insights</div><div class="float-chip chip-bottom">✧ &nbsp; Built for better flow</div></div>
+          <div class="hero-index">01 <span>/ 04</span></div>
+        </section>
+
+        <div class="section-label-row"><div><span class="section-kicker">AT A GLANCE</span><h2>Workspace overview</h2></div><span class="updated-label" id="last-updated">Live workspace data</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-violet">▤</span><span class="stat-trend">DATABASE</span></div><div class="stat-label">Total invoices</div><div class="stat-number" id="total-invoices">—</div><div class="stat-foot"><span class="foot-dot violet"></span> Saved in your workspace</div><div class="stat-decoration deco-one"></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-blue">$</span><span class="stat-trend">USD</span></div><div class="stat-label">Invoice value</div><div class="stat-number" id="total-value">—</div><div class="stat-foot"><span class="foot-dot blue"></span> Total created invoice value</div><div class="stat-decoration deco-two"></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-green">◷</span><span class="stat-trend">SANDBOX</span></div><div class="stat-label">Payment environment</div><div class="stat-number stat-text">Sandbox</div><div class="stat-foot"><span class="foot-dot green"></span> Test mode — no live charges</div><div class="stat-decoration deco-three"></div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="surface-card invoice-card"><div class="card-heading"><div><span class="section-kicker">RECENT ACTIVITY</span><h3>Latest invoices</h3><p>Your newest invoice records</p></div><button class="subtle-link" data-page="invoices">View all <span>↗</span></button></div><div id="overview-invoices" class="table-container"><div class="loading-state"><span class="loader"></span> Loading invoice records...</div></div></article>
+          <article class="surface-card insight-card"><div class="card-heading"><div><span class="section-kicker">YOUR AI COMPANION</span><h3>Ask something smart</h3><p>Get quick help with your payment workflow</p></div><span class="ai-orb-small">✳</span></div><div class="insight-prompt"><span class="prompt-spark">✦</span><p>“How can I keep my invoice process organized?”</p></div><button class="button button-dark" data-page="assistant">Open AI assistant <span>↗</span></button><div class="insight-foot"><span class="pulse-dot"></span> Groq AI connection</div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-invoices">
+        <div class="page-intro compact-intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> BILLING WORKSPACE</div><h1>Invoices<span class="heading-period">.</span></h1><p>Create, review and organize your invoice records.</p></div><button class="button button-primary" id="create-invoice-button"><span>＋</span> New invoice</button></div>
+        <article class="surface-card full-card"><div class="card-heading invoice-toolbar"><div><span class="section-kicker">YOUR RECORDS</span><h3>All invoices</h3><p>Invoices saved in your local database</p></div><div class="table-tools"><label class="search-box"><span>⌕</span><input id="invoice-search" type="search" placeholder="Search invoices..." aria-label="Search invoices"></label><select id="invoice-filter" aria-label="Filter invoices"><option value="all">All statuses</option><option value="pending">Pending</option><option value="paid">Paid</option><option value="cancelled">Cancelled</option></select></div></div><div id="invoices-list" class="table-container"><div class="loading-state"><span class="loader"></span> Loading invoice records...</div></div></article>
+      </section>
+
+      <section class="page" id="page-transactions">
+        <div class="page-intro compact-intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> PAYMENT ACTIVITY</div><h1>Transactions<span class="heading-period">.</span></h1><p>Review payment activity recorded by the platform.</p></div></div>
+        <article class="surface-card full-card"><div class="card-heading"><div><span class="section-kicker">TRANSACTION LOG</span><h3>Recorded transactions</h3><p>Only confirmed records should appear here.</p></div><span class="coming-tag">SANDBOX</span></div><div id="transactions-list" class="table-container"><div class="loading-state"><span class="loader"></span> Checking transaction records...</div></div></article>
+      </section>
+
+      <section class="page" id="page-assistant">
+        <div class="page-intro compact-intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> GROQ-POWERED SUPPORT</div><h1>AI assistant<span class="heading-period">.</span></h1><p>Your intelligent companion for invoices and payment workflows.</p></div><span class="ai-status-tag"><span class="pulse-dot"></span> AI READY</span></div>
+        <article class="assistant-shell">
+          <div class="assistant-top"><div class="assistant-identity"><div class="assistant-avatar">✳</div><div><strong>PayPilot AI</strong><small><span class="pulse-dot"></span> Connected assistant</small></div></div><span class="model-label">GROQ · GPT-OSS-20B</span></div>
+          <div class="chat-welcome"><div class="welcome-symbol">✳</div><h2>What can I help you <em>figure out?</em></h2><p>Ask about invoices, payment concepts or how to manage your workflow.</p></div>
+          <div id="chat-messages" class="chat-messages" aria-live="polite"></div>
+          <div class="suggestion-list"><button class="suggestion" data-prompt="Give me a summary of my invoices and invoice value."><span>▤</span> Summarize my invoices</button><button class="suggestion" data-prompt="Explain how a PayPal Sandbox payment workflow works."><span>⇄</span> Explain Sandbox payments</button><button class="suggestion" data-prompt="Give me three practical ways to organize invoice management."><span>✧</span> Improve my workflow</button></div>
+          <form id="chat-form" class="chat-form"><input id="chat-input" type="text" placeholder="Message PayPilot AI..." autocomplete="off" maxlength="4000" required><button class="send-button" id="send-chat" type="submit" aria-label="Send message">↑</button></form>
+          <div class="chat-disclaimer">PayPilot AI can make mistakes. Verify important financial decisions.</div>
+        </article>
+      </section>
+      <footer class="footer"><span>✳</span> PayPilot AI <i>·</i> Intelligent payment workspace <i>·</i> Sandbox environment</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="invoice-modal" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header"><div><span class="section-kicker">NEW RECORD</span><h2 id="modal-title">Create invoice</h2><p>Add an invoice to your workspace.</p></div><button class="close-button" id="close-modal" type="button" aria-label="Close">×</button></div>
+      <form id="invoice-form">
+        <label for="customer-name">Customer name</label><input id="customer-name" name="customer" placeholder="e.g. Acme Studio" required maxlength="100">
+        <label for="invoice-description">Description</label><input id="invoice-description" name="description" placeholder="e.g. Design services" required maxlength="200">
+        <label for="invoice-amount">Amount (USD)</label><div class="amount-input"><span>$</span><input id="invoice-amount" name="amount" type="number" placeholder="250.00" min="0.01" max="10000" step="0.01" required></div>
+        <div class="modal-note"><span>ⓘ</span> This creates an invoice record only. It does not charge a customer.</div>
+        <div id="invoice-error" class="form-error" role="alert"></div>
+        <div class="modal-actions"><button class="button button-quiet" id="cancel-modal" type="button">Cancel</button><button class="button button-primary" type="submit" id="save-invoice">Save invoice <span>↗</span></button></div>
+      </form>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
